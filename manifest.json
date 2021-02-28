@@ -1,0 +1,19 @@
+{
+
+  "manifest_version": 2,
+  "name": "Media Extractor",
+  "version": "1.0",
+
+  "description": "Description",
+
+  "icons": {
+    "48": "icons/main.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [ "*://*.mozilla.org/*" ],
+      "js": [ "borderify.js" ]
+    }
+  ]
+}
