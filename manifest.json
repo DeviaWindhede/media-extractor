@@ -20,9 +20,15 @@
     "default_popup": "popup/extractor.html"
   },
 
+  "applications": {
+    "gecko": {
+      "id": "mycoolextension@mycoolextension.com"
+    }
+  },
+
   "content_scripts": [
     {
-      "matches": [ "*://*.mozilla.org/*" ],
+      "matches": [ "*://*/*" ],
       "js": [ "extractor.js" ]
     }
   ]

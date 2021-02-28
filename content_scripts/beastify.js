@@ -1,19 +1,3 @@
-/*
-function main() {
-    document.body.style.border = "5px solid red";
-
-    var srcList = $('img').map(function () {
-        return this.src;
-    }).get();
-
-    for (var i = 0; i < $(srcList).images; i++) {
-        console.log($(srcList).images[i].src);
-        //c.innerHTML += "<img src=\"" + document.images[i].src + "\">" + document.images[i].name + "</img>";
-    }
-}
-main();
-*/
-
 (function () {
     /**
      * Check and set a global guard variable.
@@ -31,6 +15,11 @@ main();
      * that image, then insert the node into the document.
      */
     function insertBeast(beastURL) {
+        for (var i = 0; i < document.images; i++) {
+            console.log(document.images[i].src);
+        }
+
+
         removeExistingBeasts();
         let beastImage = document.createElement("img");
         beastImage.setAttribute("src", beastURL);

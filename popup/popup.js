@@ -23,6 +23,6 @@ function reportExecuteScriptError(error) {
     console.error(`Failed to execute content script: ${error.message}`);
 }
 
-browser.tabs.executeScript({ file: "/extractor.js" })
+browser.tabs.executeScript({ file: "../extractor.js" })
     .then(listenForClicks)
     .catch(reportExecuteScriptError);
