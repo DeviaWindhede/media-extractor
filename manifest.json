@@ -2,7 +2,7 @@
 
   "manifest_version": 2,
   "name": "Media Extractor",
-  "version": "1.0",
+  "version": "0.1",
   "homepage_url": "https://github.com/DanielWindhede/media-extractor",
   "description": "Description",
 
@@ -29,7 +29,7 @@
   "content_scripts": [
     {
       "matches": [ "*://*/*" ],
-      "js": [ "extractor.js" ]
+      "js": [ "content_scripts/extractor.js" ]
     }
   ]
 }
