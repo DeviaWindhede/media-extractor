@@ -17,20 +17,18 @@
     },
     "background": {
         "scripts": [
-            "/background_scripts/settings.js",
-            "/background_scripts/util.js",
-            "/background_scripts/main.js"
+            "background_scripts/settings.js",
+            "background_scripts/util.js",
+            "background_scripts/main.js"
         ]
     },
     "browser_action": {
-        "browser_style": true,
-        "default_popup": "/html/options.html",
-        "default_icon": {
-            "24": "/icons/main.png"
-        }
+      "default_icon": "icons/main.png",
+      "default_title": "Media Extractor",
+      "default_popup": "popup/popup.html"
     },
     "options_ui": {
-        "page": "/html/options.html",
+        "page": "html/options.html",
         "open_in_tab": true
     },
     "applications": {

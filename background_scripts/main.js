@@ -30,7 +30,7 @@ const onRequestHandler = request => {
 
   defaultSettings.links.push(request.url);
   navigator.clipboard.writeText(defaultSettings.links.join(', '));
-  browser.storage.sync.set(defaultSettings).then(store => {
+  browser.storage.local.set(defaultSettings).then(store => {
     settings = store;
     setIcon(settings);
   });
@@ -39,14 +39,20 @@ const onRequestHandler = request => {
 
 const onChangedHandler = (changes, area) => {
 
-  browser.storage.sync.get(defaultSettings).then(store => {
+  browser.storage.local.get(defaultSettings).then(store => {
     settings = store;
     // setIcon(settings);
   });
 };
 // register handlers
-browser.storage.sync.get(defaultSettings).then(store => {
 
+// async function clearStorage() {
+//   await browser.storage.local.clear();
+// };
+
+// browser.runtime.onStartup.addListener(clearStorage);
+
+browser.storage.local.get(defaultSettings).then(store => {
   settings = store;
   // setIcon(settings);
   chrome.storage.onChanged.addListener(onChangedHandler);

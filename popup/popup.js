@@ -1,0 +1,7 @@
+
+
+const btn = document.getElementById('btn');
+
+btn.addEventListener('click', function handleClick() {
+    browser.runtime.openOptionsPage();
+});
