@@ -1,0 +1,35 @@
+{
+
+  "manifest_version": 2,
+  "name": "Media Extractor",
+  "version": "0.1",
+  "homepage_url": "https://github.com/DanielWindhede/media-extractor",
+  "description": "Description",
+
+  "permissions": [
+    "activeTab"
+  ],
+
+  "icons": {
+    "48": "icons/main.png"
+  },
+
+  "browser_action": {
+    "default_icon": "icons/main.png",
+    "default_title": "Media Extractor",
+    "default_popup": "popup/extractor.html"
+  },
+
+  "applications": {
+    "gecko": {
+      "id": "mycoolextension@mycoolextension.com"
+    }
+  },
+
+  "content_scripts": [
+    {
+      "matches": [ "*://*/*" ],
+      "js": [ "content_scripts/extractor.js" ]
+    }
+  ]
+}

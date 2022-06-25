@@ -1,35 +1,41 @@
 {
-
-  "manifest_version": 2,
-  "name": "Media Extractor",
-  "version": "0.1",
-  "homepage_url": "https://github.com/DanielWindhede/media-extractor",
-  "description": "Description",
-
-  "permissions": [
-    "activeTab"
-  ],
-
-  "icons": {
-    "48": "icons/main.png"
-  },
-
-  "browser_action": {
-    "default_icon": "icons/main.png",
-    "default_title": "Media Extractor",
-    "default_popup": "popup/extractor.html"
-  },
-
-  "applications": {
-    "gecko": {
-      "id": "mycoolextension@mycoolextension.com"
+    "manifest_version": 2,
+    "name": "Media Extractor",
+    "version": "0.1",
+    "homepage_url": "https://github.com/DanielWindhede/media-extractor",
+    "description": "Description",
+    "permissions": [
+        "<all_urls>",
+        "webRequest",
+        "webRequestBlocking",
+        "tabs",
+        "storage",
+        "clipboardWrite"
+    ],
+    "icons": {
+        "48": "icons/main.png"
+    },
+    "background": {
+        "scripts": [
+            "/background_scripts/settings.js",
+            "/background_scripts/util.js",
+            "/background_scripts/main.js"
+        ]
+    },
+    "browser_action": {
+        "browser_style": true,
+        "default_popup": "/html/options.html",
+        "default_icon": {
+            "24": "/icons/main.png"
+        }
+    },
+    "options_ui": {
+        "page": "/html/options.html",
+        "open_in_tab": true
+    },
+    "applications": {
+        "gecko": {
+            "id": "mediaextractor@example.com"
+        }
     }
-  },
-
-  "content_scripts": [
-    {
-      "matches": [ "*://*/*" ],
-      "js": [ "content_scripts/extractor.js" ]
-    }
-  ]
 }
