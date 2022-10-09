@@ -1,9 +1,11 @@
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <title>Media Extractor</title>
     <link href="/css/milligram.min.css" rel="stylesheet">
+    <link href="options.css" rel="stylesheet">
 </head>
 <body>
     <header style="background-color: #606c76; color:#fff; font-weight: 500;padding: 0 .4rem;text-align:center;">
@@ -16,8 +18,6 @@
                     <div class="column">
                         <input type="checkbox" id="ignore" />
                         <label class="label-inline" for="ignore">ignore whitelist</label><br />
-                        <input type="checkbox" id="closetab" />
-                        <label class="label-inline" for="closetab">close tab</label><br />
                         <input type="checkbox" id="disable" />
                         <label class="label-inline" for="disable">disable</label>
                     </div>
@@ -36,12 +36,17 @@
     </main>
     <button id="btn">Click me</button>
     <label for="links">links</label>
-    <div id="container"></div>
+    <button id="clear-btn">Clear</button>
+    <button id="hide-image">Toggle Images Display</button>
+    <div id="image-container" class="container"></div>
+    <button id="hide-video">Toggle Video Display</button>
+    <div id="video-container" class="container"></div>
     <textarea style="margin-bottom: 0;" id="links" placeholder="example.com/file.mp4"></textarea>
 
     <script src="../background_scripts/settings.js"></script>
     <script src="../background_scripts/util.js"></script>
     <script src="options.js"></script>
+    <script src="styling.js"></script>
 </body>
 </html>
 

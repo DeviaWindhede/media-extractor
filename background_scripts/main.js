@@ -11,7 +11,11 @@ const getExtensionFromUrl = url => {
 }
 
 const setIcon = settings => {
-  browser.browserAction.setIcon({ path: 'icons/main.png' });
+  let path = 'icons/active.png';
+  if (settings.disable === true) {
+    path = 'icons/inactive.png';
+  }
+  browser.browserAction.setIcon({ path });
 }
 // handlers
 const onRequestHandler = request => {
@@ -22,26 +26,27 @@ const onRequestHandler = request => {
   if (!settings.ignore && !settings.whitelist.includes(getHostFromUrl(request.originUrl))) {
     return false;
   }
+
   // check if extension is valid
   if (!settings.extensions.includes(getExtensionFromUrl(request.url))) {
     return false;
   }
   // copy url to clipboard
-
-  defaultSettings.links.push(request.url);
-  navigator.clipboard.writeText(defaultSettings.links.join(', '));
-  browser.storage.local.set(defaultSettings).then(store => {
-    settings = store;
-    setIcon(settings);
-  });
+  if (defaultSettings.links.includes(request.url) === false) {
+    defaultSettings.links.push(request.url);
+    // navigator.clipboard.writeText(defaultSettings.links.join(', '));
+    browser.storage.local.set(defaultSettings).then(store => {
+      settings = store;
+      setIcon(settings);
+    });
+  }
   return false;
 }
 
 const onChangedHandler = (changes, area) => {
-
   browser.storage.local.get(defaultSettings).then(store => {
     settings = store;
-    // setIcon(settings);
+    setIcon(settings);
   });
 };
 // register handlers
@@ -54,7 +59,7 @@ const onChangedHandler = (changes, area) => {
 
 browser.storage.local.get(defaultSettings).then(store => {
   settings = store;
-  // setIcon(settings);
+  setIcon(settings);
   chrome.storage.onChanged.addListener(onChangedHandler);
   chrome.webRequest.onBeforeRequest.addListener(onRequestHandler, {
     urls: ["<all_urls>"]
